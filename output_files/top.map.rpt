@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top
-Tue Jul 28 01:10:57 2026
+Tue Jul 28 01:18:47 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -51,13 +51,13 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jul 28 01:10:56 2026           ;
+; Analysis & Synthesis Status        ; Successful - Tue Jul 28 01:18:47 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; top                                             ;
 ; Top-level Entity Name              ; top                                             ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 18,993                                          ;
-;     Total combinational functions  ; 18,686                                          ;
+; Total logic elements               ; 19,004                                          ;
+;     Total combinational functions  ; 18,697                                          ;
 ;     Dedicated logic registers      ; 2,541                                           ;
 ; Total registers                    ; 2541                                            ;
 ; Total pins                         ; 8                                               ;
@@ -178,7 +178,7 @@ on the Quartus Prime software download page.
 ;     Processor 6            ;   0.1%      ;
 ;     Processor 7            ;   0.1%      ;
 ;     Processor 8            ;   0.1%      ;
-;     Processors 9-12        ;   0.0%      ;
+;     Processors 9-12        ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -214,16 +214,16 @@ on the Quartus Prime software download page.
 +---------------------------------------------+----------------------------+
 ; Resource                                    ; Usage                      ;
 +---------------------------------------------+----------------------------+
-; Estimated Total logic elements              ; 18,993                     ;
+; Estimated Total logic elements              ; 19,004                     ;
 ;                                             ;                            ;
-; Total combinational functions               ; 18686                      ;
+; Total combinational functions               ; 18697                      ;
 ; Logic element usage by number of LUT inputs ;                            ;
-;     -- 4 input functions                    ; 14773                      ;
-;     -- 3 input functions                    ; 2811                       ;
-;     -- <=2 input functions                  ; 1102                       ;
+;     -- 4 input functions                    ; 14784                      ;
+;     -- 3 input functions                    ; 2816                       ;
+;     -- <=2 input functions                  ; 1097                       ;
 ;                                             ;                            ;
 ; Logic elements by mode                      ;                            ;
-;     -- normal mode                          ; 18438                      ;
+;     -- normal mode                          ; 18449                      ;
 ;     -- arithmetic mode                      ; 248                        ;
 ;                                             ;                            ;
 ; Total registers                             ; 2541                       ;
@@ -236,7 +236,7 @@ on the Quartus Prime software download page.
 ;                                             ;                            ;
 ; Maximum fan-out node                        ; chip8_cpu:cpu|display_x[0] ;
 ; Maximum fan-out                             ; 2596                       ;
-; Total fan-out                               ; 80926                      ;
+; Total fan-out                               ; 80974                      ;
 ; Average fan-out                             ; 3.81                       ;
 +---------------------------------------------+----------------------------+
 
@@ -246,10 +246,10 @@ on the Quartus Prime software download page.
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                        ; Entity Name         ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |top                                      ; 18686 (0)           ; 2541 (0)                  ; 0           ; 0            ; 0       ; 0         ; 8    ; 0            ; |top                                                                                                                       ; top                 ; work         ;
-;    |chip8_cpu:cpu|                        ; 1137 (1137)         ; 466 (466)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|chip8_cpu:cpu                                                                                                         ; chip8_cpu           ; work         ;
+; |top                                      ; 18697 (0)           ; 2541 (0)                  ; 0           ; 0            ; 0       ; 0         ; 8    ; 0            ; |top                                                                                                                       ; top                 ; work         ;
+;    |chip8_cpu:cpu|                        ; 1156 (1156)         ; 466 (466)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|chip8_cpu:cpu                                                                                                         ; chip8_cpu           ; work         ;
 ;    |chip8_memory:memory|                  ; 19 (19)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|chip8_memory:memory                                                                                                   ; chip8_memory        ; work         ;
-;    |display:framebuffer|                  ; 17282 (17282)       ; 2049 (2049)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:framebuffer                                                                                                   ; display             ; work         ;
+;    |display:framebuffer|                  ; 17274 (17274)       ; 2049 (2049)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:framebuffer                                                                                                   ; display             ; work         ;
 ;    |freq_div:pixel_enable|                ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|freq_div:pixel_enable                                                                                                 ; freq_div            ; work         ;
 ;    |vga_renderer:renderer|                ; 208 (18)            ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|vga_renderer:renderer                                                                                                 ; vga_renderer        ; work         ;
 ;       |lpm_divide:Div0|                   ; 82 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|vga_renderer:renderer|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
@@ -303,7 +303,7 @@ Encoding Type:  One-Hot
 ; Number of registers using Synchronous Load   ; 60    ;
 ; Number of registers using Asynchronous Clear ; 2522  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1480  ;
+; Number of registers using Clock Enable       ; 1479  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -316,7 +316,7 @@ Encoding Type:  One-Hot
 ; vga_timing:timing|hsync                ; 1       ;
 ; vga_timing:timing|vsync                ; 1       ;
 ; chip8_cpu:cpu|mem_addr[9]              ; 7       ;
-; chip8_cpu:cpu|pc[9]                    ; 24      ;
+; chip8_cpu:cpu|pc[9]                    ; 25      ;
 ; Total number of inverted registers = 4 ;         ;
 +----------------------------------------+---------+
 
@@ -331,7 +331,7 @@ Encoding Type:  One-Hot
 ; 17:1               ; 3 bits    ; 33 LEs        ; 3 LEs                ; 30 LEs                 ; Yes        ; |top|chip8_cpu:cpu|sp[2]          ;
 ; 11:1               ; 12 bits   ; 84 LEs        ; 12 LEs               ; 72 LEs                 ; Yes        ; |top|chip8_cpu:cpu|I[4]           ;
 ; 21:1               ; 10 bits   ; 140 LEs       ; 30 LEs               ; 110 LEs                ; Yes        ; |top|chip8_cpu:cpu|pc[8]          ;
-; 24:1               ; 11 bits   ; 176 LEs       ; 44 LEs               ; 132 LEs                ; Yes        ; |top|chip8_cpu:cpu|mem_addr[11]   ;
+; 24:1               ; 10 bits   ; 160 LEs       ; 50 LEs               ; 110 LEs                ; Yes        ; |top|chip8_cpu:cpu|mem_addr[11]   ;
 ; 43:1               ; 6 bits    ; 168 LEs       ; 48 LEs               ; 120 LEs                ; Yes        ; |top|chip8_cpu:cpu|V[14][1]       ;
 ; 43:1               ; 6 bits    ; 168 LEs       ; 48 LEs               ; 120 LEs                ; Yes        ; |top|chip8_cpu:cpu|V[13][3]       ;
 ; 43:1               ; 6 bits    ; 168 LEs       ; 48 LEs               ; 120 LEs                ; Yes        ; |top|chip8_cpu:cpu|V[12][5]       ;
@@ -419,26 +419,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 8                           ;
 ; cycloneiii_ff         ; 2541                        ;
-;     CLR               ; 36                          ;
+;     CLR               ; 37                          ;
 ;     CLR SCLR          ; 1025                        ;
 ;     ENA               ; 19                          ;
-;     ENA CLR           ; 370                         ;
+;     ENA CLR           ; 369                         ;
 ;     ENA CLR SCLR      ; 1031                        ;
 ;     ENA CLR SLD       ; 60                          ;
-; cycloneiii_lcell_comb ; 18688                       ;
+; cycloneiii_lcell_comb ; 18699                       ;
 ;     arith             ; 248                         ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 124                         ;
 ;         3 data inputs ; 123                         ;
-;     normal            ; 18440                       ;
+;     normal            ; 18451                       ;
 ;         0 data inputs ; 24                          ;
 ;         1 data inputs ; 30                          ;
-;         2 data inputs ; 925                         ;
-;         3 data inputs ; 2688                        ;
-;         4 data inputs ; 14773                       ;
+;         2 data inputs ; 920                         ;
+;         3 data inputs ; 2693                        ;
+;         4 data inputs ; 14784                       ;
 ;                       ;                             ;
 ; Max LUT depth         ; 33.10                       ;
-; Average LUT depth     ; 15.36                       ;
+; Average LUT depth     ; 15.38                       ;
 +-----------------------+-----------------------------+
 
 
@@ -457,7 +457,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Tue Jul 28 01:08:48 2026
+    Info: Processing started: Tue Jul 28 01:16:39 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off chip8 -c top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -486,8 +486,8 @@ Warning (10230): Verilog HDL assignment warning at cpu.v(108): truncated value w
 Warning (10230): Verilog HDL assignment warning at cpu.v(111): truncated value with size 32 to match size of target (8) File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 111
 Warning (10230): Verilog HDL assignment warning at cpu.v(150): truncated value with size 32 to match size of target (4) File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 150
 Warning (10230): Verilog HDL assignment warning at cpu.v(176): truncated value with size 32 to match size of target (4) File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 176
-Warning (10230): Verilog HDL assignment warning at cpu.v(372): truncated value with size 32 to match size of target (4) File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 372
-Warning (10230): Verilog HDL assignment warning at cpu.v(374): truncated value with size 32 to match size of target (12) File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 374
+Warning (10230): Verilog HDL assignment warning at cpu.v(377): truncated value with size 32 to match size of target (4) File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 377
+Warning (10230): Verilog HDL assignment warning at cpu.v(379): truncated value with size 32 to match size of target (12) File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 379
 Warning (10240): Verilog HDL Always Construct warning at cpu.v(77): inferring latch(es) for variable "init_index", which holds its previous value in one or more paths through the always construct File: /home/akshat/projects/chip8_vga/src/cpu/cpu.v Line: 77
 Info (12128): Elaborating entity "chip8_memory" for hierarchy "chip8_memory:memory" File: /home/akshat/projects/chip8_vga/src/top.v Line: 79
 Info (12128): Elaborating entity "display" for hierarchy "display:framebuffer" File: /home/akshat/projects/chip8_vga/src/top.v Line: 95
@@ -534,15 +534,15 @@ Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file /home/akshat/projects/chip8_vga/output_files/top.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 19029 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 19040 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 6 output pins
-    Info (21061): Implemented 19021 logic cells
+    Info (21061): Implemented 19032 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 13 warnings
     Info: Peak virtual memory: 620 megabytes
-    Info: Processing ended: Tue Jul 28 01:10:57 2026
-    Info: Elapsed time: 00:02:09
-    Info: Total CPU time (on all processors): 00:02:24
+    Info: Processing ended: Tue Jul 28 01:18:47 2026
+    Info: Elapsed time: 00:02:08
+    Info: Total CPU time (on all processors): 00:02:21
 
 
 +------------------------------------------+

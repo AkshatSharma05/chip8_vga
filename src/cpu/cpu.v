@@ -364,6 +364,11 @@ always @(posedge clk or negedge rst)
 
                     V[15] <= {7'b0, display_collision};
 
+                    // Sprite reads temporarily borrow the program-memory
+                    // address port. Resume fetching at the current PC;
+                    // otherwise sprite bytes are executed as opcodes and
+                    // the XOR sprite is redrawn (toggled) repeatedly.
+                    mem_addr <= pc;
                     state <= FETCH_HI;
 
                 end
