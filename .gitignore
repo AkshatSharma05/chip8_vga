@@ -1,0 +1,30 @@
+# Quartus generated databases and compilation outputs
+/db/
+/incremental_db/
+/output_files/
+
+# Generated simulation netlists and working libraries
+/simulation/questa/
+/simulation/modelsim/
+/work/
+
+# Quartus user/session files
+*.qws
+*.qdf
+*.rpt
+*.summary
+*.smsg
+*.qmsg
+*.log
+
+# Simulator traces and local build products
+*.vcd
+*.fst
+*.wlf
+obj_dir/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+*~
+.DS_Store
