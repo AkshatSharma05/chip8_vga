@@ -1,0 +1,9 @@
+
+State Machine - |top|chip8_cpu:cpu|state
+Name state.DRAW_ISSUE state.DRAW_READ state.EXECUTE state.LOAD state.FETCH_LO state.FETCH_HI 
+state.FETCH_HI 0 0 0 0 0 0 
+state.FETCH_LO 0 0 0 0 1 1 
+state.LOAD 0 0 0 1 0 1 
+state.EXECUTE 0 0 1 0 0 1 
+state.DRAW_READ 0 1 0 0 0 1 
+state.DRAW_ISSUE 1 0 0 0 0 1 
