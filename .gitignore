@@ -28,3 +28,8 @@ obj_dir/
 .idea/
 *~
 .DS_Store
+
+# Local implementation notes generated during development
+/FRAMEBUFFER_BRAM.md
+/PORTING.md
+/ROM_LOADING.md

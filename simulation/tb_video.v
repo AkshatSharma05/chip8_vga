@@ -3,6 +3,7 @@
 module tb_video;
     reg clk_50 = 1'b0;
     reg reset_n = 1'b0;
+    reg reset_key1_n = 1'b1;
 
     wire r;
     wire g;
@@ -21,6 +22,7 @@ module tb_video;
     top dut (
         .clk_50     (clk_50),
         .reset_n   (reset_n),
+        .reset_key1_n(reset_key1_n),
         .r          (r),
         .g          (g),
         .b          (b),
