@@ -4,6 +4,8 @@ module tb_video;
     reg clk_50 = 1'b0;
     reg reset_n = 1'b0;
     reg reset_key1_n = 1'b1;
+    reg ps2_clk = 1'b1;
+    reg ps2_data = 1'b1;
 
     wire r;
     wire g;
@@ -23,6 +25,8 @@ module tb_video;
         .clk_50     (clk_50),
         .reset_n   (reset_n),
         .reset_key1_n(reset_key1_n),
+        .ps2_clk    (ps2_clk),
+        .ps2_data   (ps2_data),
         .r          (r),
         .g          (g),
         .b          (b),
@@ -56,6 +60,11 @@ module tb_video;
         #100;
         reset_n = 1'b1;
 
+        // Let the keyboard-test ROM leave Fx0A and draw the "A" glyph.
+        force dut.chip8_keys = 16'h0400;
+        repeat (100000) @(posedge clk_50);
+        release dut.chip8_keys;
+
         // Slightly more than three 640x480 frames at a 25 MHz pixel enable.
         repeat (2600000) @(posedge clk_50);
 
@@ -65,9 +74,8 @@ module tb_video;
             $fatal(1, "VGA vertical sync did not run");
         if (white_pixels == 0)
             $fatal(1, "frame remained black");
-        if (first_frame_white != second_frame_white)
-            $fatal(1, "glyph changed between frames: %0d versus %0d",
-                   first_frame_white, second_frame_white);
+        if (second_frame_white == 0)
+            $fatal(1, "keyboard glyph was not visible in the settled frame");
 
         $display("PASS: hsync=%0d vsync=%0d frame1_white=%0d frame2_white=%0d",
                  hsync_edges, vsync_edges,

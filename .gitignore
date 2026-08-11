@@ -29,7 +29,5 @@ obj_dir/
 *~
 .DS_Store
 
-# Local implementation notes generated during development
-/FRAMEBUFFER_BRAM.md
-/PORTING.md
-/ROM_LOADING.md
+# Local documentation generated during development
+/docs/

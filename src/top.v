@@ -1,11 +1,13 @@
 // Board-neutral CHIP-8 top level for a 50 MHz Cyclone IV design.
 // Pin locations and I/O standards are intentionally left to the Quartus project.
 module top #(
-    parameter CPU_INSTRUCTIONS_PER_SECOND = 1000
+    parameter CPU_INSTRUCTIONS_PER_SECOND = 700
 ) (
     input  wire       clk_50,
     input  wire       reset_n,
     input  wire       reset_key1_n,
+    input  wire       ps2_clk,
+    input  wire       ps2_data,
     output wire       r,
     output wire       g,
     output wire       b,
@@ -43,10 +45,30 @@ module top #(
     wire [5:0] chip_x;
     wire [4:0] chip_y;
     wire system_reset_n;
+    wire [7:0] ps2_scancode;
+    wire ps2_scancode_valid;
+    wire [15:0] chip8_keys;
 
     // Both DE0-Nano pushbuttons are active-low. Either KEY0 (J15) or
     // KEY1 (E1) resets the complete design.
     assign system_reset_n = reset_n & reset_key1_n;
+
+    ps2_receiver keyboard_receiver (
+        .clk            (clk_50),
+        .rst            (system_reset_n),
+        .ps2_clk        (ps2_clk),
+        .ps2_data       (ps2_data),
+        .scancode       (ps2_scancode),
+        .scancode_valid (ps2_scancode_valid)
+    );
+
+    ps2_decoder keyboard_decoder (
+        .clk            (clk_50),
+        .rst            (system_reset_n),
+        .scancode       (ps2_scancode),
+        .scancode_valid (ps2_scancode_valid),
+        .keys           (chip8_keys)
+    );
 
     // A full blink takes one second: 500 ms off followed by 500 ms on.
     // Reset turns the LED off immediately and restarts the blink interval.
@@ -110,6 +132,7 @@ module top #(
         .clk               (clk_50),
         .rst               (system_reset_n),
         .instruction_tick  (instruction_tick),
+        .keys              (chip8_keys),
         .mem_read_data     (memory_data),
         .mem_read_addr     (memory_address),
         .mem_write_enable  (memory_write_enable),

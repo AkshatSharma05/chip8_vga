@@ -2,6 +2,7 @@ module chip8_cpu (
     input clk,
     input rst,
     input instruction_tick,
+    input [15:0] keys,
 
     //Memory Wires
     input  [7:0]  mem_read_data,
@@ -75,6 +76,21 @@ reg draw_collision_accum;
 reg [7:0] lfsr;
 reg [3:0] transfer_index;
 reg [3:0] transfer_last;
+integer key_index;
+reg [3:0] pressed_key;
+reg key_is_pressed;
+
+// Select the lowest-numbered pressed CHIP-8 key.
+always @* begin
+    pressed_key = 4'h0;
+    key_is_pressed = 1'b0;
+    for (key_index = 0; key_index < 16; key_index = key_index + 1) begin
+        if (!key_is_pressed && keys[key_index]) begin
+            pressed_key = key_index[3:0];
+            key_is_pressed = 1'b1;
+        end
+    end
+end
 
 always @(posedge clk or negedge rst)
     if(!rst)
@@ -344,6 +360,24 @@ always @(posedge clk or negedge rst)
                     end
 
                     4'hE: begin
+                        case (ir[7:0])
+                            8'h9E: begin
+                                if (keys[V[ir[11:8]][3:0]]) begin
+                                    pc <= pc + 12'd2;
+                                    mem_addr <= pc + 12'd2;
+                                end
+                            end
+
+                            8'hA1: begin
+                                if (!keys[V[ir[11:8]][3:0]]) begin
+                                    pc <= pc + 12'd2;
+                                    mem_addr <= pc + 12'd2;
+                                end
+                            end
+
+                            default: begin
+                            end
+                        endcase
                     end
 
                     4'hF: begin
@@ -353,6 +387,13 @@ always @(posedge clk or negedge rst)
                             end
 
                             8'h0A: begin
+                                if (key_is_pressed) begin
+                                    V[ir[11:8]] <= {4'h0, pressed_key};
+                                end else begin
+                                    // Repeat Fx0A until a key is pressed.
+                                    pc <= pc - 12'd2;
+                                    mem_addr <= pc - 12'd2;
+                                end
                             end
 
                             8'h15: begin
