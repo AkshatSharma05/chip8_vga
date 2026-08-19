@@ -1,7 +1,8 @@
 // Board-neutral CHIP-8 top level for a 50 MHz Cyclone IV design.
 // Pin locations and I/O standards are intentionally left to the Quartus project.
 module top #(
-    parameter CPU_INSTRUCTIONS_PER_SECOND = 700
+    parameter CPU_INSTRUCTIONS_PER_SECOND = 700,
+    parameter BUZZER_FREQUENCY_HZ = 1000
 ) (
     input  wire       clk_50,
     input  wire       reset_n,
@@ -13,7 +14,8 @@ module top #(
     output wire       b,
     output wire       vga_hsync,
     output wire       vga_vsync,
-    output wire       status_led
+    output wire       status_led,
+    output wire       buzzer
 );
 
     wire pixel_tick;
@@ -48,10 +50,33 @@ module top #(
     wire [7:0] ps2_scancode;
     wire ps2_scancode_valid;
     wire [15:0] chip8_keys;
+    wire sound_active;
+
+    localparam integer BUZZER_HALF_PERIOD_CYCLES =
+        50_000_000 / (2 * BUZZER_FREQUENCY_HZ);
+    integer buzzer_count;
+    reg        buzzer_level;
 
     // Both DE0-Nano pushbuttons are active-low. Either KEY0 (J15) or
     // KEY1 (E1) resets the complete design.
     assign system_reset_n = reset_n & reset_key1_n;
+
+    // Generate an audible square wave only while the CHIP-8 sound timer is
+    // active. The buzzer is driven low immediately when the timer expires.
+    always @(posedge clk_50) begin
+        if (!system_reset_n) begin
+            buzzer_count <= 0;
+            buzzer_level <= 1'b0;
+        end else if (!sound_active) begin
+            buzzer_count <= 0;
+            buzzer_level <= 1'b0;
+        end else if (buzzer_count == BUZZER_HALF_PERIOD_CYCLES - 1) begin
+            buzzer_count <= 0;
+            buzzer_level <= ~buzzer_level;
+        end else begin
+            buzzer_count <= buzzer_count + 1'b1;
+        end
+    end
 
     ps2_receiver keyboard_receiver (
         .clk            (clk_50),
@@ -144,7 +169,8 @@ module top #(
         .display_x         (display_x),
         .display_y         (display_y),
         .display_sprite    (display_sprite),
-        .display_clear     (display_clear)
+        .display_clear     (display_clear),
+        .sound_active      (sound_active)
     );
 
     chip8_memory memory (
@@ -190,4 +216,5 @@ module top #(
     );
 
     assign status_led = heartbeat_led;
+    assign buzzer = buzzer_level;
 endmodule

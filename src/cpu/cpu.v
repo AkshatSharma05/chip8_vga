@@ -20,7 +20,10 @@ module chip8_cpu (
     output reg [5:0] display_x,
     output reg [4:0] display_y,
     output reg [7:0] display_sprite, //one row/byte of the sprite
-    output reg    display_clear
+    output reg    display_clear,
+
+    // High while the CHIP-8 sound timer is non-zero.
+    output wire sound_active
 
 );
 
@@ -53,6 +56,8 @@ reg [3:0] sp; //Stack Pointer
 
 reg [7:0] delay_timer;
 reg [7:0] sound_timer;
+
+assign sound_active = (sound_timer != 8'd0);
 
 reg [7:0] opcode_hi;
 reg [7:0] opcode_lo;

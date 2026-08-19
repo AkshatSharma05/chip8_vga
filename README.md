@@ -9,7 +9,12 @@ This project is a CHIP-8 interpreter written in Verilog for the **DE0-Nano** (Cy
 - CHIP-8 CPU and 4 KB memory
 - 64×32 framebuffer rendered over VGA
 - PS/2 keyboard input
+- Buzzer output driven by the CHIP-8 sound timer
 - Configurable instruction speed
+
+The default CPU rate is 2,000 instructions per second. Besides improving the
+speed of instruction-heavy games, this shortens the interval between the XOR
+erase and redraw operations used to move sprites, reducing visible flicker.
 
 ## Getting started
 
@@ -34,3 +39,11 @@ Z X C V         A 0 B F
 ```
 
 Either pushbutton resets the system. The status LED blinks while the design is running.
+
+## Buzzer
+
+The `buzzer` top-level output produces a 1 kHz square wave while the CHIP-8
+sound timer is non-zero. Assign `buzzer` to the GPIO pin connected to a passive
+piezo element or a suitable driver in `top.qsf`. The current assignment is pin
+E6, using the 2.5 V I/O standard required by bank 8. If a pin in another bank
+is selected, set its I/O standard to match that bank's VCCIO.

@@ -55,7 +55,7 @@ always @(posedge clk or negedge rst) begin
 
         scancode_valid <= 1'b0;
 
-        // Recover if a partial/noisy frame stops before all 11 bits arrive.
+        // Recover if a frame stops before all 11 bits arrive.
         // 50,000 clocks is 1 ms at 50 MHz; normal PS/2 edges are much closer.
         if (bit_count != 0) begin
             if (frame_timeout == 16'd49_999) begin
