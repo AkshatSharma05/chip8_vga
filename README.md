@@ -40,10 +40,3 @@ Z X C V         A 0 B F
 
 Either pushbutton resets the system. The status LED blinks while the design is running.
 
-## Buzzer
-
-The `buzzer` top-level output produces a 1 kHz square wave while the CHIP-8
-sound timer is non-zero. Assign `buzzer` to the GPIO pin connected to a passive
-piezo element or a suitable driver in `top.qsf`. The current assignment is pin
-E6, using the 2.5 V I/O standard required by bank 8. If a pin in another bank
-is selected, set its I/O standard to match that bank's VCCIO.
