@@ -4,6 +4,19 @@ This project is a CHIP-8 interpreter written in Verilog for the **DE0-Nano** (Cy
 
 > This is a work in progress. Some instructions, games, or hardware features may not behave perfectly yet.
 
+---
+
+### Demo Video
+
+<a href="https://youtu.be/tYJ7WJbcMgY">
+  <img 
+    src="https://img.youtube.com/vi/tYJ7WJbcMgY/hqdefault.jpg" 
+    width="420"
+    alt="CHIP-8 Demo Video">
+</a>
+
+---
+
 ## What's here
 
 - CHIP-8 CPU and 4 KB memory
