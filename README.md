@@ -8,9 +8,9 @@ This project is a CHIP-8 interpreter written in Verilog for the **DE0-Nano** (Cy
 
 ### Demo Video
 
-<a href="https://youtu.be/tYJ7WJbcMgY">
+<a href="https://youtu.be/TOXjJ6Phhso">
   <img 
-    src="https://i.ytimg.com/vi/tYJ7WJbcMgY/hqdefault.jpg"
+    src="https://i.ytimg.com/vi/TOXjJ6Phhso/hqdefault.jpg"
     width="420"
     alt="CHIP-8 Demo Video">
 </a>
